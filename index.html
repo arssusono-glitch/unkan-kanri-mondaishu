@@ -323,6 +323,87 @@
     .category-grid { grid-template-columns: 1fr; }
     .stats-row { grid-template-columns: repeat(3, 1fr); }
   }
+
+/* ===== 学習モード（スマホ最適化） ===== */
+#studyScreen { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:#f0f4f8; z-index:100; overflow:hidden; flex-direction:column; }
+#studyScreen.visible { display:flex; }
+.study-header { background:linear-gradient(135deg,#1a365d,#2d3748); color:#fff; padding:14px 16px 12px; display:flex; align-items:center; gap:12px; flex-shrink:0; }
+.study-header-back { background:rgba(255,255,255,.15); border:none; color:#fff; border-radius:50%; width:38px; height:38px; font-size:1.1rem; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.study-header-title { font-size:1rem; font-weight:800; }
+.study-header-sub { font-size:0.75rem; opacity:.75; margin-top:2px; }
+/* ボトムナビ */
+.study-bottom-nav { display:flex; background:#fff; border-top:1px solid #e2e8f0; flex-shrink:0; padding-bottom:env(safe-area-inset-bottom,0); }
+.study-nav-btn { flex:1; padding:8px 2px 6px; border:none; background:none; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:3px; font-size:0.62rem; font-weight:700; color:#a0aec0; transition:.2s; }
+.study-nav-btn .nav-icon { font-size:1.3rem; line-height:1; }
+.study-nav-btn.active { color:#2d3748; }
+.study-nav-btn.active .nav-icon { transform:scale(1.15); }
+/* コンテンツエリア */
+.study-content-area { flex:1; overflow-y:auto; padding:12px 12px 16px; -webkit-overflow-scrolling:touch; }
+.study-page { display:none; }
+.study-page.active { display:block; }
+/* セクションタイトル */
+.s-page-title { font-size:1.1rem; font-weight:900; color:#1a365d; margin:0 0 12px 0; display:flex; align-items:center; gap:8px; }
+/* アコーディオンカード */
+.acc-card { background:#fff; border-radius:14px; margin-bottom:10px; overflow:hidden; box-shadow:0 1px 6px rgba(0,0,0,.07); }
+.acc-head { padding:14px 16px; display:flex; align-items:center; justify-content:space-between; cursor:pointer; gap:10px; }
+.acc-head-left { display:flex; align-items:center; gap:10px; }
+.acc-icon { width:34px; height:34px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.05rem; flex-shrink:0; }
+.acc-title { font-size:0.92rem; font-weight:800; color:#2d3748; }
+.acc-arrow { color:#a0aec0; font-size:0.85rem; transition:transform .3s; flex-shrink:0; }
+.acc-card.open .acc-arrow { transform:rotate(180deg); }
+.acc-body { display:none; padding:0 14px 14px; }
+.acc-card.open .acc-body { display:block; }
+/* テーブル */
+.s-table { width:100%; border-collapse:collapse; font-size:0.82rem; margin:8px 0; }
+.s-table th { background:#2d3748; color:#fff; padding:7px 8px; text-align:left; font-size:0.78rem; }
+.s-table td { padding:8px; border-bottom:1px solid #edf2f7; color:#2d3748; line-height:1.5; }
+.s-table tr:last-child td { border-bottom:none; }
+.s-table tr:nth-child(even) td { background:#f8fafc; }
+/* キー数字バッジ */
+.kv { display:inline-block; background:#c53030; color:#fff; font-weight:900; font-size:0.85rem; padding:2px 10px; border-radius:20px; white-space:nowrap; }
+.kv.green { background:#276749; }
+.kv.blue { background:#2b6cb0; }
+.kv.orange { background:#c05621; }
+/* メモボックス */
+.s-memo { background:#fffbeb; border-left:4px solid #f6ad55; border-radius:0 10px 10px 0; padding:10px 12px; margin:10px 0 4px; font-size:0.83rem; color:#744210; line-height:1.7; }
+.s-memo strong { color:#c05621; }
+/* 箇条書き */
+.s-ul { margin:6px 0 4px; padding-left:18px; }
+.s-ul li { font-size:0.84rem; color:#4a5568; line-height:1.8; }
+.s-p { font-size:0.84rem; color:#4a5568; line-height:1.8; margin:6px 0; }
+/* 重要数字ページ */
+.num-section-title { font-size:0.78rem; font-weight:800; color:#fff; background:#2d3748; padding:6px 12px; border-radius:8px 8px 0 0; margin-top:14px; }
+.num-card { background:#fff; border-radius:0 0 14px 14px; margin-bottom:14px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.07); }
+.num-row { display:flex; align-items:center; padding:11px 14px; border-bottom:1px solid #f0f4f8; gap:12px; }
+.num-row:last-child { border-bottom:none; }
+.num-badge-big { background:#c53030; color:#fff; font-size:0.82rem; font-weight:900; padding:5px 12px; border-radius:20px; white-space:nowrap; flex-shrink:0; min-width:80px; text-align:center; }
+.num-badge-big.g { background:#276749; }
+.num-badge-big.b { background:#2b6cb0; }
+.num-badge-big.o { background:#c05621; }
+.num-desc { font-size:0.82rem; color:#2d3748; font-weight:600; line-height:1.5; }
+.num-sub { font-size:0.75rem; color:#718096; margin-top:2px; }
+/* フラッシュカード */
+.flash-top { text-align:center; font-size:0.82rem; color:#718096; margin-bottom:12px; font-weight:700; }
+.flash-wrap { perspective:800px; margin:0 0 12px; }
+.flash-inner { position:relative; height:200px; transition:transform .45s cubic-bezier(.4,0,.2,1); transform-style:preserve-3d; cursor:pointer; border-radius:18px; }
+.flash-inner.flipped { transform:rotateY(180deg); }
+.flash-f, .flash-b { position:absolute; inset:0; backface-visibility:hidden; border-radius:18px; display:flex; align-items:center; justify-content:center; padding:20px; }
+.flash-f { background:linear-gradient(145deg,#1a365d,#2d3748); }
+.flash-b { background:linear-gradient(145deg,#1a6b3c,#276749); transform:rotateY(180deg); }
+.flash-q { color:#fff; font-size:1rem; font-weight:800; text-align:center; line-height:1.6; }
+.flash-a { color:#fff; font-size:1.1rem; font-weight:900; text-align:center; line-height:1.5; }
+.flash-note { color:rgba(255,255,255,.8); font-size:0.78rem; text-align:center; margin-top:10px; line-height:1.5; }
+.flash-hint { text-align:center; font-size:0.78rem; color:#a0aec0; margin-bottom:14px; }
+.flash-btns { display:flex; gap:10px; }
+.flash-btns button { flex:1; padding:14px; border:none; border-radius:12px; font-size:0.9rem; font-weight:800; cursor:pointer; }
+.flash-prev-btn { background:#edf2f7; color:#4a5568; }
+.flash-next-btn { background:linear-gradient(135deg,#1a365d,#2d3748); color:#fff; }
+.flash-dots { display:flex; justify-content:center; gap:5px; margin-top:10px; flex-wrap:wrap; }
+.flash-dot { width:7px; height:7px; border-radius:50%; background:#e2e8f0; transition:.2s; }
+.flash-dot.cur { background:#2d3748; transform:scale(1.3); }
+/* カテゴリ色 */
+.ic0 { background:#ebf4ff; } .ic1 { background:#e6fffa; } .ic2 { background:#fff5f5; } .ic3 { background:#fffff0; } .ic4 { background:#faf5ff; }
+
 </style>
 </head>
 <body>
@@ -377,11 +458,435 @@
       </select>
     </div>
     <button class="start-btn" onclick="startQuiz()">▶ 試験を開始する</button>
+    <button class="start-btn" style="background:linear-gradient(135deg,#276749,#38a169);margin-top:10px;" onclick="showStudyMode()">📖 テキストで学習する</button>
   </div>
 </div>
 
 <!-- ===== QUIZ SCREEN ===== -->
-<div id="quizScreen">
+
+
+
+  <!-- 学習モード画面（スマホ最適化） -->
+  <div id="studyScreen">
+    <!-- ヘッダー -->
+    <div class="study-header">
+      <button class="study-header-back" onclick="backToStart()">←</button>
+      <div>
+        <div class="study-header-title" id="studyHeaderTitle">📚 貨物自動車運送事業法</div>
+        <div class="study-header-sub">テキストで学習</div>
+      </div>
+    </div>
+
+    <!-- コンテンツエリア -->
+    <div class="study-content-area" id="studyContentArea">
+
+      <!-- P0: 貨物事業法 -->
+      <div class="study-page active" id="sp0">
+        <div class="acc-card open">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic0">🏢</div><div class="acc-title">事業の種類と手続き</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <table class="s-table"><tr><th>事業</th><th>手続き</th></tr>
+              <tr><td>一般貨物自動車運送</td><td><span class="kv">許可</span></td></tr>
+              <tr><td>特定貨物自動車運送</td><td><span class="kv">許可</span></td></tr>
+              <tr><td>貨物軽自動車運送（軽・バイク）</td><td><span class="kv green">届出のみ</span></td></tr>
+            </table>
+            <div class="s-memo">💡 一般・特定は<strong>「許可」</strong>が必要。軽トラ・バイクは<strong>「届出」</strong>だけでOK！</div>
+          </div>
+        </div>
+        <div class="acc-card">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic0">👤</div><div class="acc-title">運行管理者の選任数</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p class="s-p"><span class="kv">5両以上</span> の営業所は必ず1名以上選任が必要。</p>
+            <table class="s-table"><tr><th>車両数</th><th>最低人数</th></tr>
+              <tr><td>5〜30両</td><td><span class="kv">1名</span></td></tr>
+              <tr><td>31〜60両</td><td><span class="kv">2名</span></td></tr>
+              <tr><td>61〜90両</td><td><span class="kv">3名</span></td></tr>
+            </table>
+            <div class="s-memo">💡 計算式：<strong>1＋(両数−5)÷30 の切り上げ</strong><br>例：90両 → 1＋(85÷30)＝1＋2.83→ <strong>3名</strong></div>
+          </div>
+        </div>
+        <div class="acc-card">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic0">📋</div><div class="acc-title">点呼の種類と確認事項</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p class="s-p" style="font-weight:800;color:#2d3748;">【乗務前点呼】出発前に確認</p>
+            <ul class="s-ul"><li>酒気帯びの有無（アルコール検知器必須）</li><li>疾病・疲労・睡眠不足の有無</li><li>日常点検の実施確認</li><li>当日の運行経路・荷物の確認</li></ul>
+            <p class="s-p" style="font-weight:800;color:#2d3748;margin-top:12px;">【乗務後点呼】帰庫後に確認</p>
+            <ul class="s-ul"><li>酒気帯びの有無</li><li>乗務中の車両の状態</li><li>道路・運行の状況</li></ul>
+            <p class="s-p" style="font-weight:800;color:#2d3748;margin-top:12px;">【中間点呼】運行途中</p>
+            <p class="s-p">乗務前・乗務後どちらも対面できない場合に実施。</p>
+            <div class="s-memo">💡 補助者に任せられる点呼は<strong>全体の1/2未満</strong>まで。管理者は<strong>1/2以上</strong>必ず自分でやること！</div>
+            <p class="s-p" style="font-weight:800;color:#2d3748;margin-top:12px;">【IT点呼】の条件</p>
+            <ul class="s-ul"><li>同一の<strong>地方運輸局管内</strong>の営業所間のみ</li><li>1日（1暦日）<span class="kv blue">16時間以内</span></li></ul>
+          </div>
+        </div>
+        <div class="acc-card">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic0">🗂️</div><div class="acc-title">記録の保存期間</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <table class="s-table"><tr><th>記録の種類</th><th>保存期間</th></tr>
+              <tr><td>乗務記録・点呼記録</td><td><span class="kv green">1年</span></td></tr>
+              <tr><td>運行記録計（タコグラフ）</td><td><span class="kv green">1年</span></td></tr>
+              <tr><td>運行指示書</td><td><span class="kv green">1年</span></td></tr>
+              <tr><td>事故記録</td><td><span class="kv orange">3年</span></td></tr>
+              <tr><td>運転者台帳</td><td><span class="kv orange">退職後3年</span></td></tr>
+            </table>
+            <div class="s-memo">💡 基本は<strong>「1年」</strong>、事故関係は<strong>「3年」</strong>と覚えよう！</div>
+          </div>
+        </div>
+        <div class="acc-card">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic0">🎓</div><div class="acc-title">運転者への指導・診断</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <table class="s-table"><tr><th>対象</th><th>内容</th></tr>
+              <tr><td>初任運転者</td><td>座学<span class="kv">15h</span>＋実技<span class="kv">20h</span>＝合計<span class="kv">35h</span>以上</td></tr>
+              <tr><td>高齢者（65歳以上）</td><td>適性診断を<span class="kv green">毎年1回</span></td></tr>
+              <tr><td>重大事故惹起者</td><td><span class="kv">8時間</span>以上の特別指導</td></tr>
+              <tr><td>軽微事故惹起者</td><td><span class="kv blue">6時間</span>以上の特別指導</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="acc-card">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic0">⚠️</div><div class="acc-title">安全管理・事故報告</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <ul class="s-ul">
+              <li>安全管理規程の作成義務：<span class="kv">100両以上</span>の事業者</li>
+              <li>事故の速報：死傷者・酒気帯び・鉄道施設損傷など → <strong>速やか</strong>に報告</li>
+              <li>事故定期報告：翌年度の<span class="kv blue">3月31日まで</span></li>
+              <li>輸送安全情報の公表：事業年度終了後<span class="kv green">100日以内</span></li>
+            </ul>
+          </div>
+        </div>
+      </div><!-- /sp0 -->
+
+      <!-- P1: 道路運送車両法 -->
+      <div class="study-page" id="sp1">
+        <div class="acc-card open">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic1">🔧</div><div class="acc-title">点検の種類と実施者</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <table class="s-table"><tr><th>点検</th><th>誰が</th><th>いつ</th></tr>
+              <tr><td>日常点検</td><td><span class="kv green">運転者本人</span></td><td>毎日・運行前</td></tr>
+              <tr><td>定期点検（3ヶ月）</td><td>整備管理者が計画</td><td>3ヶ月ごと</td></tr>
+              <tr><td>定期点検（12ヶ月）</td><td>整備管理者が計画</td><td>年1回</td></tr>
+            </table>
+            <div class="s-memo">💡 日常点検は<strong>「整備士」ではなく「運転者」が自分でやる</strong>のがポイント！</div>
+          </div>
+        </div>
+        <div class="acc-card">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic1">📡</div><div class="acc-title">タコグラフ（運行記録計）</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <p class="s-p">以下のいずれかに該当する事業用自動車は装着義務あり：</p>
+            <ul class="s-ul"><li>最大積載量 <span class="kv">5トン以上</span></li><li>車両総重量 <span class="kv">8トン以上</span></li></ul>
+            <div class="s-memo">💡 語呂：<strong>「積載ゴ（5）t・総重ハ（8）t」</strong><br>記録媒体の保存期間は <strong>1年間</strong></div>
+          </div>
+        </div>
+        <div class="acc-card">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic1">📦</div><div class="acc-title">積載物のサイズ制限</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <table class="s-table"><tr><th>項目</th><th>制限</th></tr>
+              <tr><td>高さ</td><td>地上から <span class="kv">3.8m以内</span></td></tr>
+              <tr><td>幅</td><td>車幅＋左右各0.3m（合計<span class="kv blue">0.6m</span>以内）</td></tr>
+              <tr><td>長さ</td><td>車両の長さの <span class="kv green">1.1倍以内</span></td></tr>
+              <tr><td>車軸荷重</td><td><span class="kv orange">10トン以内</span></td></tr>
+            </table>
+          </div>
+        </div>
+      </div><!-- /sp1 -->
+
+      <!-- P2: 道路交通法 -->
+      <div class="study-page" id="sp2">
+        <div class="acc-card open">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic2">🏎️</div><div class="acc-title">最高速度</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <table class="s-table"><tr><th>場所・車両</th><th>速度</th></tr>
+              <tr><td>一般道路（法定）</td><td><span class="kv blue">60km/h</span></td></tr>
+              <tr><td>高速道路（普通車）</td><td><span class="kv green">100km/h</span></td></tr>
+              <tr><td>高速道路（大型トラック8t超等）</td><td><span class="kv">80km/h</span></td></tr>
+              <tr><td>高速道路（けん引車）</td><td><span class="kv">80km/h</span></td></tr>
+            </table>
+            <div class="s-memo">💡 大型トラックは高速でも<strong>80km/h</strong>が上限。普通車の100km/hと混同しないで！</div>
+          </div>
+        </div>
+        <div class="acc-card">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic2">🍺</div><div class="acc-title">飲酒運転の基準</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <table class="s-table"><tr><th>呼気アルコール濃度</th><th>区分</th></tr>
+              <tr><td><span class="kv">0.15mg/L以上</span></td><td>酒気帯び運転（違反）</td></tr>
+              <tr><td><span class="kv orange">0.25mg/L以上</span></td><td>より重い罰則が適用</td></tr>
+            </table>
+            <div class="s-memo">💡 <strong>「0.15」で酒気帯び</strong>。缶ビール1本でアウトになるレベル。飲んだら乗らない！</div>
+          </div>
+        </div>
+        <div class="acc-card">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic2">🅿️</div><div class="acc-title">駐停車禁止の距離</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <table class="s-table"><tr><th>場所</th><th>禁止距離</th></tr>
+              <tr><td>交差点・横断歩道</td><td><span class="kv green">5m以内</span></td></tr>
+              <tr><td>消火栓・火災報知器</td><td><span class="kv green">5m以内</span></td></tr>
+              <tr><td>踏切</td><td><span class="kv">10m以内</span></td></tr>
+              <tr><td>バス停（表示柱）</td><td><span class="kv">10m以内</span></td></tr>
+            </table>
+            <div class="s-memo">💡 基本は<strong>「5m」</strong>、踏切とバス停は<strong>「10m」</strong>。この2つだけ例外！</div>
+          </div>
+        </div>
+        <div class="acc-card">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic2">🛑</div><div class="acc-title">停止距離のしくみ</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <ul class="s-ul">
+              <li><strong>空走距離</strong>：危険を感じてからブレーキを踏むまでに進む距離（速度に<strong>比例</strong>）</li>
+              <li><strong>制動距離</strong>：ブレーキを踏んでから止まるまでの距離（速度の<strong>2乗に比例</strong>）</li>
+              <li><strong>停止距離</strong>＝空走距離＋制動距離</li>
+            </ul>
+            <div class="s-memo">💡 速度が<strong>2倍</strong>になると制動距離は<strong>4倍</strong>！だからスピードは本当に危険。</div>
+          </div>
+        </div>
+        <div class="acc-card">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic2">🚦</div><div class="acc-title">追越し禁止場所</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <ul class="s-ul">
+              <li>道路の曲がり角・上り坂の頂上付近・急な下り坂</li>
+              <li>トンネル内（車両通行帯のないもの）</li>
+              <li>交差点とその手前<span class="kv green">30m以内</span></li>
+              <li>踏切とその手前<span class="kv green">30m以内</span></li>
+            </ul>
+          </div>
+        </div>
+      </div><!-- /sp2 -->
+
+      <!-- P3: 労働・改善基準 -->
+      <div class="study-page" id="sp3">
+        <div class="acc-card open">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic3">⏰</div><div class="acc-title">拘束時間・休息期間</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <table class="s-table"><tr><th>項目</th><th>原則</th><th>最大</th></tr>
+              <tr><td>1日の拘束時間</td><td><span class="kv green">13時間以内</span></td><td><span class="kv">16時間まで</span>（週2日）</td></tr>
+              <tr><td>1ヶ月の拘束時間</td><td><span class="kv green">293時間以内</span></td><td><span class="kv">320時間まで</span>（年6ヶ月）</td></tr>
+              <tr><td>休息期間（継続）</td><td><span class="kv blue">8時間以上</span></td><td>分割可（10h、2回）</td></tr>
+            </table>
+            <div class="s-memo">💡 <strong>拘束時間</strong>＝始業〜終業（休憩含む）<br>💡 <strong>休息期間</strong>＝終業〜翌始業（自由な時間）<br>💡 拘束13h＋休息8h＋空き3h＝1日24h のイメージ</div>
+          </div>
+        </div>
+        <div class="acc-card">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic3">🚗</div><div class="acc-title">連続運転のルール</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <ul class="s-ul">
+              <li>連続運転の上限：<span class="kv">4時間以内</span></li>
+              <li>4時間ごとに：<span class="kv green">30分以上</span>の休憩が必要</li>
+              <li>休憩を2回に分けてもOK（<span class="kv blue">15分＋15分</span>）</li>
+            </ul>
+            <div class="s-memo">💡 「<strong>4時間運転したら30分休む</strong>」と覚えよう！</div>
+          </div>
+        </div>
+        <div class="acc-card">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic3">🌙</div><div class="acc-title">夜間・フェリーのルール</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <ul class="s-ul">
+              <li>夜間（午後10時〜午前5時）に<span class="kv">4時間以上</span>走る場合：1日の拘束時間は<span class="kv blue">14時間以内</span></li>
+              <li>フェリー乗船中は<strong>休息期間に算入</strong>できる（ただし2時間を差し引く）</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-card">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic3">💰</div><div class="acc-title">割増賃金率</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <table class="s-table"><tr><th>区分</th><th>割増率</th></tr>
+              <tr><td>時間外（月60時間以下）</td><td><span class="kv green">25%以上</span></td></tr>
+              <tr><td>時間外（月60時間超）</td><td><span class="kv">50%以上</span></td></tr>
+              <tr><td>休日労働</td><td><span class="kv blue">35%以上</span></td></tr>
+              <tr><td>深夜労働（22時〜5時）</td><td><span class="kv green">25%以上</span></td></tr>
+            </table>
+            <div class="s-memo">💡 自動車運転者の年間時間外上限：<span class="kv">年960時間</span>（2024年〜「2024年問題」）</div>
+          </div>
+        </div>
+      </div><!-- /sp3 -->
+
+      <!-- P4: 実務知識 -->
+      <div class="study-page" id="sp4">
+        <div class="acc-card open">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic4">📐</div><div class="acc-title">運行計画の計算（超重要！）</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <table class="s-table"><tr><th>求めるもの</th><th>公式</th></tr>
+              <tr><td>時間</td><td>距離 ÷ 速度</td></tr>
+              <tr><td>距離</td><td>速度 × 時間</td></tr>
+              <tr><td>速度</td><td>距離 ÷ 時間</td></tr>
+            </table>
+            <div class="s-memo">💡 例：60kmを平均40km/hで走る時間<br>→ 60÷40＝<strong>1.5時間＝1時間30分</strong><br><br>改善基準チェックの手順：<br>①各区間の時間を計算 → ②連続運転4h超えてないか確認 → ③拘束時間13h以内か確認 → ④休息期間8h以上確保できるか確認</div>
+          </div>
+        </div>
+        <div class="acc-card">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic4">🚨</div><div class="acc-title">事故の4大要因</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <table class="s-table"><tr><th>要因</th><th>具体例</th></tr>
+              <tr><td><span class="kv">人的要因</span></td><td>疲労・飲酒・漫然運転・技術不足</td></tr>
+              <tr><td><span class="kv blue">車両要因</span></td><td>整備不良・タイヤ劣化・ブレーキ不良</td></tr>
+              <tr><td><span class="kv green">道路要因</span></td><td>見通し不良・路面状況・標識不備</td></tr>
+              <tr><td><span class="kv orange">環境要因</span></td><td>天候・夜間・時間帯</td></tr>
+            </table>
+            <div class="s-memo">💡 事故原因の約<strong>9割が人的要因</strong>。だから運転者管理が試験でも実務でも最重要！</div>
+          </div>
+        </div>
+        <div class="acc-card">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic4">😴</div><div class="acc-title">疲労・健康管理</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <ul class="s-ul">
+              <li><strong>疲労の最大原因</strong>：睡眠不足。理想は7〜8時間</li>
+              <li><strong>睡眠時無呼吸症候群（SAS）</strong>：いびきが激しい・日中眠い → 要受診・乗務停止</li>
+              <li><strong>健康診断</strong>：一般運転者は<span class="kv green">年1回</span>、深夜業従事者は<span class="kv">年2回</span></li>
+              <li><strong>脳卒中・心疾患</strong>：長時間労働・高血圧・糖尿病が危険因子</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-card">
+          <div class="acc-head" onclick="toggleAcc(this)">
+            <div class="acc-head-left"><div class="acc-icon ic4">🌧️</div><div class="acc-title">悪天候・視界不良時の速度</div></div>
+            <span class="acc-arrow">▼</span>
+          </div>
+          <div class="acc-body">
+            <table class="s-table"><tr><th>条件</th><th>対応速度</th></tr>
+              <tr><td>雨・霧・砂塵で視界50m以内</td><td><span class="kv">最高速度の半分以下</span></td></tr>
+              <tr><td>路面が凍結</td><td><span class="kv">最高速度の半分以下</span></td></tr>
+              <tr><td>積雪・ぬかるみ</td><td><span class="kv">最高速度の半分以下</span></td></tr>
+            </table>
+          </div>
+        </div>
+      </div><!-- /sp4 -->
+
+      <!-- P5: 重要数字 -->
+      <div class="study-page" id="sp5">
+        <div class="num-section-title">⚖️ 貨物自動車運送事業法</div>
+        <div class="num-card">
+          <div class="num-row"><div class="num-badge-big">5両以上</div><div><div class="num-desc">運行管理者の選任が必要</div></div></div>
+          <div class="num-row"><div class="num-badge-big">100両以上</div><div><div class="num-desc">安全管理規程の作成義務</div></div></div>
+          <div class="num-row"><div class="num-badge-big g">35時間</div><div><div class="num-desc">初任運転者の指導時間（座学15h＋実技20h）</div></div></div>
+          <div class="num-row"><div class="num-badge-big">8時間</div><div><div class="num-desc">重大事故惹起者への特別指導</div></div></div>
+          <div class="num-row"><div class="num-badge-big b">6時間</div><div><div class="num-desc">軽微事故惹起者への特別指導</div></div></div>
+          <div class="num-row"><div class="num-badge-big g">毎年1回</div><div><div class="num-desc">65歳以上の運転者への適性診断</div></div></div>
+          <div class="num-row"><div class="num-badge-big g">1年間</div><div><div class="num-desc">乗務記録・点呼記録・運行指示書の保存</div></div></div>
+          <div class="num-row"><div class="num-badge-big o">3年間</div><div><div class="num-desc">事故記録・運転者台帳の保存</div></div></div>
+          <div class="num-row"><div class="num-badge-big b">16時間</div><div><div class="num-desc">IT点呼の1日あたりの上限</div></div></div>
+          <div class="num-row"><div class="num-badge-big g">100日以内</div><div><div class="num-desc">輸送安全情報の公表期限（事業年度終了後）</div></div></div>
+        </div>
+        <div class="num-section-title">🚗 道路運送車両法</div>
+        <div class="num-card">
+          <div class="num-row"><div class="num-badge-big">5t以上</div><div><div class="num-desc">タコグラフ装着義務（最大積載量）</div></div></div>
+          <div class="num-row"><div class="num-badge-big">8t以上</div><div><div class="num-desc">タコグラフ装着義務（車両総重量）</div></div></div>
+          <div class="num-row"><div class="num-badge-big g">3.8m以内</div><div><div class="num-desc">積載物の高さ制限</div></div></div>
+          <div class="num-row"><div class="num-badge-big b">10t以内</div><div><div class="num-desc">車軸荷重の上限</div></div></div>
+        </div>
+        <div class="num-section-title">🚦 道路交通法</div>
+        <div class="num-card">
+          <div class="num-row"><div class="num-badge-big">80km/h</div><div><div class="num-desc">高速道路の大型トラック最高速度</div></div></div>
+          <div class="num-row"><div class="num-badge-big o">0.15mg/L</div><div><div class="num-desc">酒気帯び運転の基準（呼気アルコール）</div></div></div>
+          <div class="num-row"><div class="num-badge-big g">5m以内</div><div><div class="num-desc">交差点・横断歩道付近の駐停車禁止</div></div></div>
+          <div class="num-row"><div class="num-badge-big">10m以内</div><div><div class="num-desc">踏切・バス停付近の駐停車禁止</div></div></div>
+          <div class="num-row"><div class="num-badge-big g">30m以内</div><div><div class="num-desc">交差点・踏切手前の追越し禁止</div></div></div>
+        </div>
+        <div class="num-section-title">⏰ 改善基準告示</div>
+        <div class="num-card">
+          <div class="num-row"><div class="num-badge-big g">13時間</div><div><div class="num-desc">1日の拘束時間（原則上限）</div></div></div>
+          <div class="num-row"><div class="num-badge-big">16時間</div><div><div class="num-desc">1日の拘束時間（最大・週2日まで）</div></div></div>
+          <div class="num-row"><div class="num-badge-big g">293時間</div><div><div class="num-desc">1ヶ月の拘束時間（原則上限）</div></div></div>
+          <div class="num-row"><div class="num-badge-big">320時間</div><div><div class="num-desc">1ヶ月の拘束時間（最大・年6ヶ月まで）</div></div></div>
+          <div class="num-row"><div class="num-badge-big b">8時間以上</div><div><div class="num-desc">休息期間（継続）</div></div></div>
+          <div class="num-row"><div class="num-badge-big">4時間以内</div><div><div class="num-desc">連続運転時間の上限</div></div></div>
+          <div class="num-row"><div class="num-badge-big g">30分以上</div><div><div class="num-desc">連続運転後の休憩時間</div></div></div>
+          <div class="num-row"><div class="num-badge-big o">年960時間</div><div><div class="num-desc">時間外労働の年間上限（2024年〜）</div></div></div>
+        </div>
+      </div><!-- /sp5 -->
+
+      <!-- P6: フラッシュカード -->
+      <div class="study-page" id="sp6">
+        <div class="flash-top" id="flashTop">1 / 20</div>
+        <div class="flash-wrap">
+          <div class="flash-inner" id="flashCard" onclick="flipCard()">
+            <div class="flash-f"><p class="flash-q" id="flashQ">-</p></div>
+            <div class="flash-b"><div><p class="flash-a" id="flashA">-</p><p class="flash-note" id="flashNote"></p></div></div>
+          </div>
+        </div>
+        <p class="flash-hint">👆 タップして答えを見る</p>
+        <div class="flash-btns">
+          <button class="flash-prev-btn" onclick="flashMove(-1)">◀ 前へ</button>
+          <button class="flash-next-btn" onclick="flashMove(1)">次へ ▶</button>
+        </div>
+        <div class="flash-dots" id="flashDots"></div>
+      </div><!-- /sp6 -->
+
+    </div><!-- /study-content-area -->
+
+    <!-- ボトムナビ -->
+    <div class="study-bottom-nav">
+      <button class="study-nav-btn active" onclick="switchStudyPage(0,this)" id="snb0"><span class="nav-icon">⚖️</span>事業法</button>
+      <button class="study-nav-btn" onclick="switchStudyPage(1,this)" id="snb1"><span class="nav-icon">🔧</span>車両法</button>
+      <button class="study-nav-btn" onclick="switchStudyPage(2,this)" id="snb2"><span class="nav-icon">🚦</span>交通法</button>
+      <button class="study-nav-btn" onclick="switchStudyPage(3,this)" id="snb3"><span class="nav-icon">⏰</span>改善基準</button>
+      <button class="study-nav-btn" onclick="switchStudyPage(4,this)" id="snb4"><span class="nav-icon">📐</span>実務</button>
+      <button class="study-nav-btn" onclick="switchStudyPage(5,this)" id="snb5"><span class="nav-icon">📊</span>数字</button>
+      <button class="study-nav-btn" onclick="switchStudyPage(6,this)" id="snb6"><span class="nav-icon">🃏</span>カード</button>
+    </div>
+  </div><!-- /studyScreen -->
+
+
+  <div id="quizScreen">
   <div class="progress-wrap">
     <div class="progress-info">
       <span id="progressText">問題 1 / 30</span>
@@ -1329,6 +1834,106 @@ function goHome() {
   updateStats();
   window.scrollTo({top: 0, behavior: 'smooth'});
 }
+
+
+
+// ===========================
+// 学習モード
+// ===========================
+const STUDY_TITLES = ['貨物自動車運送事業法','道路運送車両法','道路交通法','労働基準法・改善基準','実務上の知識','重要数字一覧','フラッシュカード'];
+const STUDY_ICONS  = ['⚖️','🔧','🚦','⏰','📐','📊','🃏'];
+
+function showStudyMode() {
+  document.getElementById('startScreen').style.display = 'none';
+  document.getElementById('studyScreen').classList.add('visible');
+  switchStudyPage(0, document.getElementById('snb0'));
+}
+
+function backToStart() {
+  document.getElementById('studyScreen').classList.remove('visible');
+  document.getElementById('startScreen').style.display = 'block';
+}
+
+function switchStudyPage(idx, btn) {
+  document.querySelectorAll('.study-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.study-nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sp'+idx).classList.add('active');
+  btn.classList.add('active');
+  document.getElementById('studyHeaderTitle').textContent = STUDY_ICONS[idx]+' '+STUDY_TITLES[idx];
+  document.getElementById('studyContentArea').scrollTop = 0;
+  if (idx === 6) initFlash();
+}
+
+function toggleAcc(head) {
+  const card = head.parentElement;
+  card.classList.toggle('open');
+}
+
+// フラッシュカード
+const FLASH_CARDS = [
+  {q:'運行管理者の選任が必要な車両数は？', a:'5両以上', note:'5両以上の営業所は最低1名選任が必要'},
+  {q:'1日の拘束時間の原則上限は？', a:'13時間以内', note:'最大16時間まで（週2日限り）'},
+  {q:'連続運転時間の上限は？', a:'4時間以内', note:'4時間ごとに30分以上の休憩が必要'},
+  {q:'連続運転後に必要な休憩時間は？', a:'30分以上', note:'15分×2回に分割してもOK'},
+  {q:'1ヶ月の拘束時間の原則上限は？', a:'293時間以内', note:'最大320時間まで（年6ヶ月限り）'},
+  {q:'休息期間（継続）は最低何時間？', a:'8時間以上', note:'終業〜翌始業まで連続して8時間必要'},
+  {q:'タコグラフ装着義務の基準は？', a:'最大積載量5t以上\nまたは車両総重量8t以上', note:'語呂：積載ゴ（5）t・総重ハ（8）t'},
+  {q:'酒気帯び運転の呼気アルコール基準値は？', a:'0.15mg/L以上', note:'缶ビール1本でアウトになるレベル'},
+  {q:'高速道路での大型トラック（8t超等）の最高速度は？', a:'80km/h', note:'普通車は100km/h。トラックは80km/h'},
+  {q:'交差点付近の駐停車禁止距離は？', a:'5m以内', note:'踏切・バス停は10m。基本は5m'},
+  {q:'初任運転者への特別指導時間の合計は？', a:'35時間以上', note:'座学15時間以上＋実技20時間以上'},
+  {q:'重大事故を起こした運転者への特別指導時間は？', a:'8時間以上', note:'軽微事故は6時間以上'},
+  {q:'65歳以上の運転者への適性診断頻度は？', a:'毎年1回', note:'高齢者適性診断（加齢リスク管理）'},
+  {q:'乗務記録の保存期間は？', a:'1年間', note:'事故記録・運転者台帳は3年間'},
+  {q:'IT点呼は1日何時間まで？', a:'16時間以内', note:'同一地方運輸局管内の営業所間のみ'},
+  {q:'貨物軽自動車運送事業に必要な手続きは？', a:'届出（許可は不要）', note:'一般・特定貨物は「許可」が必要'},
+  {q:'安全管理規程の作成義務がある事業者は？', a:'事業用自動車100両以上', note:'100両未満は義務なし'},
+  {q:'積載物の高さ制限は地上何mまで？', a:'3.8m以内', note:'それ以上は特殊車両通行許可が必要'},
+  {q:'輸送安全情報の公表期限は事業年度終了後何日？', a:'100日以内', note:'100両以上の事業者に義務あり'},
+  {q:'自動車運転者の年間時間外労働の上限は？', a:'年960時間', note:'2024年から適用「2024年問題」'},
+];
+
+let flashIdx = 0, flashFlipped = false;
+
+function initFlash() {
+  flashIdx = 0; flashFlipped = false;
+  buildDots();
+  showFlash();
+}
+
+function buildDots() {
+  const d = document.getElementById('flashDots');
+  d.innerHTML = '';
+  FLASH_CARDS.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.className = 'flash-dot' + (i === 0 ? ' cur' : '');
+    d.appendChild(dot);
+  });
+}
+
+function showFlash() {
+  const c = FLASH_CARDS[flashIdx];
+  document.getElementById('flashQ').textContent = c.q;
+  document.getElementById('flashA').textContent = c.a;
+  document.getElementById('flashNote').textContent = c.note || '';
+  document.getElementById('flashTop').textContent = `${flashIdx+1} / ${FLASH_CARDS.length}`;
+  const inner = document.getElementById('flashCard');
+  inner.classList.remove('flipped');
+  flashFlipped = false;
+  document.querySelectorAll('.flash-dot').forEach((d,i) => d.classList.toggle('cur', i===flashIdx));
+}
+
+function flipCard() {
+  const inner = document.getElementById('flashCard');
+  flashFlipped = !flashFlipped;
+  inner.classList.toggle('flipped', flashFlipped);
+}
+
+function flashMove(dir) {
+  flashIdx = (flashIdx + dir + FLASH_CARDS.length) % FLASH_CARDS.length;
+  showFlash();
+}
+
 
 // 起動
 init();
